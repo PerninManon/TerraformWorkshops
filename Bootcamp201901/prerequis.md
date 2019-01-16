@@ -26,7 +26,7 @@ Utiliser Azure CLI ou Azure PowerShell, via le Cloud Shell ou depuis votre poste
 - Tester le Service Principal
   - Connection avec le compte: 
     ```
-    az login --service-principal -u <nam> -p <password> --tenant <tenant>
+    az login --service-principal -u <name> -p <password> --tenant <tenant>
     ```
   - Lister les resource groups Azure: `az group list`
 
