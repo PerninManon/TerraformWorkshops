@@ -20,8 +20,7 @@ Utiliser Azure CLI ou Azure PowerShell, via le Cloud Shell ou depuis votre poste
     ```
 - Créer le Service Principal avec le rôle **Contributor** sur la subscription:
     ```
-    az ad sp create-for-rbac --role="Contributor"
-    --scopes="/subscriptions/<subscription id>"
+    az ad sp create-for-rbac --role="Contributor" --name <nom du sp> --scopes="/subscriptions/<subscription id>"
     ```
   - Récupérer l'output de la commande
 - Tester le Service Principal
