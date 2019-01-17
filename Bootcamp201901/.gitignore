@@ -1,0 +1,9 @@
+#  Local .terraform directories
+**/*/.terraform/*
+
+# .tfstate files
+**/Partie1/*.tfstate
+**/Partie1/*.tfstate.*
+
+# Partie 2
+**/Partie2/*
