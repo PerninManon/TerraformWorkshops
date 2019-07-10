@@ -136,7 +136,7 @@ Eléments supplémentaires à prendre en compte
       - `azurerm_virtual_machine_extension`
 
 #### Scénario PaaS
-![](png/schema_3.png)
+![](png/schema_3.png | width=50)
 
 1. Lister les ressources nécessaires
 2. Mettre en place le projet Terraform et déployer !
