@@ -36,15 +36,15 @@ Utiliser Azure CLI ou Azure PowerShell, via le Cloud Shell ou depuis votre poste
   - Lister les resource groups Azure: `az group list`
 
 #### Azure PowerShell
-- Se connecter à Azure: `Login-AzureRmAccount` (à faire depuis votre poste, pas depuis le Cloud Shell)
+- Se connecter à Azure: `Login-AzAccount` (à faire depuis votre poste, pas depuis le Cloud Shell)
 - Lister les subscriptions disponibles: `Get-AzureRmSubscription`
 - Sélectionner la subscription souhaitée à l'aide de son id: 
     ```powershell
-    $sub=Select-AzureRmSubscription <subscription id>
+    $sub=Select-AzSubscription <subscription id>
     ```
 - Définir un nom de Service Principal: 
     ```powershell
-    $name="bootcamp201901<name>"
+    $name="bootcamp<name>"
     ```
 - Définir un mot de passe pour le Service Principal: 
     ```powershell
@@ -56,15 +56,15 @@ Utiliser Azure CLI ou Azure PowerShell, via le Cloud Shell ou depuis votre poste
     ```
 - Définir une application dans Azure AD: 
     ```powershell
-    $azureAdApplication = New-AzureRmADApplication -DisplayName $name -IdentifierUris "http://$name" -Password $securePassword -Verbose
+    $azureAdApplication = New-AzDApplication -DisplayName $name -IdentifierUris "http://$name" -Password $securePassword -Verbose
     ```
 - Créer un Service Principal associé à l'application: 
     ```powershell
-    $spn = New-AzureRmADServicePrincipal -ApplicationId $($azureAdApplication.ApplicationId)
+    $spn = New-AzADServicePrincipal -ApplicationId $($azureAdApplication.ApplicationId)
     ```
 - Attribuer le rôle **Contributor** au Service Principal sur la subscription: 
    ```powershell
-   New-AzureRmRoleAssignment -RoleDefinitionName "Contributor" -ServicePrincipalName $($azureAdApplication.ApplicationId) -Scope "/subscriptions/<subscription id>"
+   New-AzRoleAssignment -RoleDefinitionName "Contributor" -ServicePrincipalName $($azureAdApplication.ApplicationId) -Scope "/subscriptions/<subscription id>"
    ```
 - Récupérer les informations de connexions:
     ```powershell
@@ -78,9 +78,9 @@ Utiliser Azure CLI ou Azure PowerShell, via le Cloud Shell ou depuis votre poste
   - Connection avec le compte:
     ```powershell
     $cred = New-Object System.Management.Automation.PSCredential ("http://$name", $securePassword)
-    Login-AzureRmAccount -Credential $cred -ServicePrincipal -TenantId $($sub.Tenant.Id)
+    Login-AzAccount -Credential $cred -ServicePrincipal -TenantId $($sub.Tenant.Id)
     ```
-  - Lister les resource groups Azure: `Get-AzureRmResourceGroup`
+  - Lister les resource groups Azure: `Get-AzResourceGroup`
 
 
 ## Partie 1: Déployer un projet existant
