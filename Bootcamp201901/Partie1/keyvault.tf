@@ -1,7 +1,7 @@
 resource "azurerm_key_vault" "bootcamp_keyvault" {
   name                = local.keyvault_name
   location            = var.primary_location
-  resource_group_name = azurerm_resource_group.bootcamp201901.name
+  resource_group_name = azurerm_resource_group.bootcamprg.name
 
   sku_name                        = var.keyvault_sku
   tenant_id                       = var.tenant_id
